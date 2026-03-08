@@ -1,0 +1,16 @@
+/* Custom dark mode overrides */
+
+.dark .bg-gray-800 {
+  background-color: #2d3748;
+}
+
+/* Responsive adjustments */
+
+@media (max-width: 768px) {
+  .hero {
+    padding: 2rem 1rem;
+  }
+  .features {
+    padding: 1rem;
+  }
+}
