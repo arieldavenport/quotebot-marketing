@@ -1,64 +1,361 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Features - QuoteBot</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Features — QuoteBot</title>
+  <meta name="description" content="Explore QuoteBot's full feature set: AI-powered SOW generation, integrations, reporting, security, and more." />
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css" />
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: { extend: { colors: { indigo: { 500: '#6366f1', 600: '#4f46e5', 700: '#4338ca' } } } }
+    }
+  </script>
 </head>
-<body class="bg-gray-900 text-white dark">
-  <header class="py-4 px-6">
-    <nav class="flex justify-between items-center">
-      <a href="index.html" class="text-2xl font-bold">QuoteBot</a>
-      <a href="contact.html" class="bg-blue-600 px-4 py-2 rounded">Contact</a>
-    </nav>
-  </header>
+<body class="antialiased">
 
-  <main class="py-16 px-6">
-    <h1 class="text-4xl font-bold mb-8 text-center">Features</h1>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-      <div class="bg-gray-800 p-6 rounded shadow">
-        <h2 class="text-2xl font-bold flex items-center">
-          <span class="mr-2">✅</span> AI-generated SOWs from meeting transcripts
-        </h2>
-        <p>Automatically generate SOWs from meeting transcripts with AI-driven scope extraction.</p>
-      </div>
-      <div class="bg-gray-800 p-6 rounded shadow">
-        <h2 class="text-2xl font-bold flex items-center">
-          <span class="mr-2">✅</span> DOCX export with custom templates
-        </h2>
-        <p>Export to DOCX using customizable templates for seamless integration.</p>
-      </div>
-      <div class="bg-gray-800 p-6 rounded shadow">
-        <h2 class="text-2xl font-bold flex items-center">
-          <span class="mr-2">✅</span> ConnectWise integration
-        </h2>
-        <p>Seamlessly integrate with ConnectWise for streamlined workflow.</p>
-      </div>
-      <div class="bg-gray-800 p-6 rounded shadow">
-        <h2 class="text-2xl font-bold flex items-center">
-          <span class="mr-2">✅</span> Rate table management
-        </h2>
-        <p>Manage rate tables with ease, ensuring accurate pricing.</p>
-      </div>
-      <div class="bg-gray-800 p-6 rounded shadow">
-        <h2 class="text-2xl font-bold flex items-center">
-          <span class="mr-2">✅</span> MSA discount automation
-        </h2>
-        <p>Automate MSA discounts to optimize client agreements.</p>
-      </div>
-      <div class="bg-gray-800 p-6 rounded shadow">
-        <h2 class="text-2xl font-bold flex items-center">
-          <span class="mr-2">✅</span> Webhook-based Read.ai integration
-        </h2>
-        <p>Integrate Read.ai via webhooks for enhanced data processing.</p>
+  <!-- ── NAV ── -->
+  <nav class="fixed top-0 left-0 right-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <a href="index.html" class="flex items-center gap-2">
+          <span class="text-2xl">⚡</span>
+          <span class="font-bold text-xl text-white tracking-tight">Quote<span class="gradient-text">Bot</span></span>
+        </a>
+        <div class="hidden md:flex items-center gap-8">
+          <a href="index.html" class="text-sm font-medium text-gray-300 hover:text-white transition-colors">Home</a>
+          <a href="features.html" class="text-sm font-medium text-white">Features</a>
+          <a href="contact.html" class="text-sm font-medium text-gray-300 hover:text-white transition-colors">Contact</a>
+        </div>
+        <div class="flex items-center gap-3">
+          <a href="contact.html" class="hidden sm:inline-flex btn-primary px-4 py-2 text-sm rounded-lg">Get Started →</a>
+          <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg text-gray-400 hover:text-white hover:bg-gray-800 transition-colors" aria-label="Toggle menu">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+          </button>
+        </div>
       </div>
     </div>
+    <div id="mobile-menu" class="hidden md:hidden border-t border-gray-800 bg-gray-900">
+      <div class="px-4 py-4 flex flex-col gap-4">
+        <a href="index.html" class="text-sm font-medium text-gray-300 hover:text-white">Home</a>
+        <a href="features.html" class="text-sm font-medium text-white">Features</a>
+        <a href="contact.html" class="text-sm font-medium text-gray-300 hover:text-white">Contact</a>
+        <a href="contact.html" class="btn-primary px-4 py-2 text-sm text-center rounded-lg">Get Started →</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="pt-24 pb-20">
+    <!-- Hero -->
+    <section class="gradient-hero py-16 px-4 text-center">
+      <div class="max-w-3xl mx-auto">
+        <h1 class="text-4xl sm:text-5xl font-bold mb-4">Everything You Need to <span class="gradient-text">Quote Faster</span></h1>
+        <p class="text-lg text-gray-400 max-w-2xl mx-auto">50+ features across AI, documents, integrations, reporting, and security — all built for IT services.</p>
+      </div>
+    </section>
+
+    <!-- ── DOCUMENTS ── -->
+    <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 section-glow">
+      <h2 class="text-2xl font-bold mb-2">📄 SOW &amp; Document Generation</h2>
+      <p class="text-gray-400 mb-8">From transcript to polished deliverable in minutes.</p>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div class="feature-card p-5">
+          <div class="text-2xl mb-3">🤖</div>
+          <h3 class="font-semibold text-white mb-1">AI-Powered SOW Generation</h3>
+          <p class="text-sm text-gray-400">Automatically extract services, hours, and scope from meeting transcripts using GPT-5.3.</p>
+        </div>
+        <div class="feature-card p-5">
+          <div class="text-2xl mb-3">📝</div>
+          <h3 class="font-semibold text-white mb-1">DOCX Export</h3>
+          <p class="text-sm text-gray-400">Generate branded Word documents with customizable templates, sections, and styling.</p>
+        </div>
+        <div class="feature-card p-5">
+          <div class="text-2xl mb-3">📕</div>
+          <h3 class="font-semibold text-white mb-1">PDF Export</h3>
+          <p class="text-sm text-gray-400">One-click PDF generation directly from any SOW document.</p>
+        </div>
+        <div class="feature-card p-5">
+          <div class="text-2xl mb-3">👁️</div>
+          <h3 class="font-semibold text-white mb-1">SOW Preview</h3>
+          <p class="text-sm text-gray-400">Preview documents in-browser before generating. See exactly what your client will receive.</p>
+        </div>
+        <div class="feature-card p-5">
+          <div class="text-2xl mb-3">📧</div>
+          <h3 class="font-semibold text-white mb-1">Email SOW <span class="badge-new">New</span></h3>
+          <p class="text-sm text-gray-400">Send documents directly to clients via SMTP — DOCX or PDF format, right from the project page.</p>
+        </div>
+        <div class="feature-card p-5">
+          <div class="text-2xl mb-3">🔀</div>
+          <h3 class="font-semibold text-white mb-1">Combine Meetings</h3>
+          <p class="text-sm text-gray-400">Merge multiple meeting transcripts into a single SOW for multi-phase projects.</p>
+        </div>
+        <div class="feature-card p-5">
+          <div class="text-2xl mb-3">📋</div>
+          <h3 class="font-semibold text-white mb-1">Project Templates <span class="badge-new">New</span></h3>
+          <p class="text-sm text-gray-400">Save project structures as reusable templates. Create new projects in seconds.</p>
+        </div>
+        <div class="feature-card p-5">
+          <div class="text-2xl mb-3">📑</div>
+          <h3 class="font-semibold text-white mb-1">Document Versioning</h3>
+          <p class="text-sm text-gray-400">Track every version of every document with full approval workflow.</p>
+        </div>
+        <div class="feature-card p-5">
+          <div class="text-2xl mb-3">📄</div>
+          <h3 class="font-semibold text-white mb-1">Copy Project</h3>
+          <p class="text-sm text-gray-400">Duplicate any existing project as a starting point for similar engagements.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── PRICING ── -->
+    <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 section-glow">
+      <h2 class="text-2xl font-bold mb-2">💰 Pricing &amp; Catalog</h2>
+      <p class="text-gray-400 mb-8">Flexible pricing engine built for IT services complexity.</p>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div class="feature-card p-5">
+          <div class="text-2xl mb-3">📚</div>
+          <h3 class="font-semibold text-white mb-1">Service Catalog</h3>
+          <p class="text-sm text-gray-400">Manage reusable services with categories, descriptions, default hours, and rates.</p>
+        </div>
+        <div class="feature-card p-5">
+          <div class="text-2xl mb-3">📊</div>
+          <h3 class="font-semibold text-white mb-1">Rate Tables</h3>
+          <p class="text-sm text-gray-400">Tiered rate tables with role-based pricing. Multiple tables for different engagement types.</p>
+        </div>
+        <div class="feature-card p-5">
+          <div class="text-2xl mb-3">🏷️</div>
+          <h3 class="font-semibold text-white mb-1">MSA Discounts</h3>
+          <p class="text-sm text-gray-400">Automatic MSA discount detection with configurable agreement name matching.</p>
+        </div>
+        <div class="feature-card p-5">
+          <div class="text-2xl mb-3">⚖️</div>
+          <h3 class="font-semibold text-white mb-1">Governance Engine</h3>
+          <p class="text-sm text-gray-400">Built-in project governance calculations for delivery oversight and risk management.</p>
+        </div>
+        <div class="feature-card p-5">
+          <div class="text-2xl mb-3">🧠</div>
+          <h3 class="font-semibold text-white mb-1">AI Pricing Advice</h3>
+          <p class="text-sm text-gray-400">Get AI-powered pricing recommendations with market signals and confidence scores.</p>
+        </div>
+        <div class="feature-card p-5">
+          <div class="text-2xl mb-3">🔢</div>
+          <h3 class="font-semibold text-white mb-1">Multi-Phase Projects</h3>
+          <p class="text-sm text-gray-400">Organize services into named phases with custom sort ordering.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── AI ── -->
+    <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 section-glow">
+      <h2 class="text-2xl font-bold mb-2">🧠 AI &amp; Automation</h2>
+      <p class="text-gray-400 mb-8">Powered by GPT-5.3 on Azure AI Foundry.</p>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div class="feature-card p-5">
+          <div class="text-2xl mb-3">🎙️</div>
+          <h3 class="font-semibold text-white mb-1">Meeting Synopsis</h3>
+          <p class="text-sm text-gray-400">AI-generated meeting summaries from Read.ai transcripts, ready for review.</p>
+        </div>
+        <div class="feature-card p-5">
+          <div class="text-2xl mb-3">🔍</div>
+          <h3 class="font-semibold text-white mb-1">Service Extraction</h3>
+          <p class="text-sm text-gray-400">Automatically extract services, hours, and requirements from meeting transcripts.</p>
+        </div>
+        <div class="feature-card p-5">
+          <div class="text-2xl mb-3">⚙️</div>
+          <h3 class="font-semibold text-white mb-1">Per-Task Model Selection</h3>
+          <p class="text-sm text-gray-400">Use different AI models for synopsis, extraction, pricing, and generation tasks.</p>
+        </div>
+        <div class="feature-card p-5">
+          <div class="text-2xl mb-3">🔎</div>
+          <h3 class="font-semibold text-white mb-1">Transcript Search <span class="badge-new">New</span></h3>
+          <p class="text-sm text-gray-400">Full-text search across all meeting transcripts with highlighted snippets.</p>
+        </div>
+        <div class="feature-card p-5">
+          <div class="text-2xl mb-3">📈</div>
+          <h3 class="font-semibold text-white mb-1">Similar Project Matching</h3>
+          <p class="text-sm text-gray-400">Find past projects similar to your current scope for reference pricing and structure.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── INTEGRATIONS ── -->
+    <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 section-glow">
+      <h2 class="text-2xl font-bold mb-2">🔌 Integrations</h2>
+      <p class="text-gray-400 mb-8">Connects to the tools you already use.</p>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div class="feature-card p-5">
+          <div class="text-2xl mb-3">🔧</div>
+          <h3 class="font-semibold text-white mb-1">ConnectWise Manage</h3>
+          <p class="text-sm text-gray-400">Client sync, budget tracking, project stats, and opportunity push. Full bidirectional integration.</p>
+        </div>
+        <div class="feature-card p-5">
+          <div class="text-2xl mb-3">📐</div>
+          <h3 class="font-semibold text-white mb-1">ScopeStack</h3>
+          <p class="text-sm text-gray-400">OAuth2 service catalog sync. Import services directly from your ScopeStack account.</p>
+        </div>
+        <div class="feature-card p-5">
+          <div class="text-2xl mb-3">🎤</div>
+          <h3 class="font-semibold text-white mb-1">Read.ai</h3>
+          <p class="text-sm text-gray-400">Webhook-based meeting transcript intake. Native speaker_blocks format support.</p>
+        </div>
+        <div class="feature-card p-5">
+          <div class="text-2xl mb-3">🔑</div>
+          <h3 class="font-semibold text-white mb-1">Microsoft Entra ID</h3>
+          <p class="text-sm text-gray-400">SSO authentication with auto-provisioning. Your team signs in with their Microsoft accounts.</p>
+        </div>
+        <div class="feature-card p-5">
+          <div class="text-2xl mb-3">☁️</div>
+          <h3 class="font-semibold text-white mb-1">Azure AI Foundry</h3>
+          <p class="text-sm text-gray-400">Enterprise AI via Azure's OpenAI-compatible endpoint. GPT-5.3 with custom deployment support.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── REPORTING ── -->
+    <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 section-glow">
+      <h2 class="text-2xl font-bold mb-2">📊 Dashboard &amp; Reporting</h2>
+      <p class="text-gray-400 mb-8">Real-time visibility into your pipeline.</p>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div class="feature-card p-5">
+          <div class="text-2xl mb-3">📈</div>
+          <h3 class="font-semibold text-white mb-1">KPI Dashboard</h3>
+          <p class="text-sm text-gray-400">Pipeline value, SOW count, win rate, and period-over-period comparisons at a glance.</p>
+        </div>
+        <div class="feature-card p-5">
+          <div class="text-2xl mb-3">📅</div>
+          <h3 class="font-semibold text-white mb-1">Custom Date Range <span class="badge-new">New</span></h3>
+          <p class="text-sm text-gray-400">Filter dashboard by custom date range alongside 30/90-day presets.</p>
+        </div>
+        <div class="feature-card p-5">
+          <div class="text-2xl mb-3">💹</div>
+          <h3 class="font-semibold text-white mb-1">Revenue Forecasting <span class="badge-new">New</span></h3>
+          <p class="text-sm text-gray-400">6-month revenue pipeline broken down by project status.</p>
+        </div>
+        <div class="feature-card p-5">
+          <div class="text-2xl mb-3">🏆</div>
+          <h3 class="font-semibold text-white mb-1">Win/Loss Tracking <span class="badge-new">New</span></h3>
+          <p class="text-sm text-gray-400">Conversion rates, client breakdown, and monthly trends. Know what's closing.</p>
+        </div>
+        <div class="feature-card p-5">
+          <div class="text-2xl mb-3">👥</div>
+          <h3 class="font-semibold text-white mb-1">Per-User Activity <span class="badge-new">New</span></h3>
+          <p class="text-sm text-gray-400">Track SOWs created, documents generated, and meetings converted per team member.</p>
+        </div>
+        <div class="feature-card p-5">
+          <div class="text-2xl mb-3">📋</div>
+          <h3 class="font-semibold text-white mb-1">Full Audit Trail</h3>
+          <p class="text-sm text-gray-400">Every action logged. Filterable by user, entity type, date range, and action.</p>
+        </div>
+        <div class="feature-card p-5">
+          <div class="text-2xl mb-3">📥</div>
+          <h3 class="font-semibold text-white mb-1">CSV Export</h3>
+          <p class="text-sm text-gray-400">Download project lists, service catalogs, and audit logs as CSV.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── SECURITY ── -->
+    <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 section-glow">
+      <h2 class="text-2xl font-bold mb-2">🔒 Security &amp; Access</h2>
+      <p class="text-gray-400 mb-8">Enterprise-grade security without enterprise complexity.</p>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div class="feature-card p-5">
+          <div class="text-2xl mb-3">🔐</div>
+          <h3 class="font-semibold text-white mb-1">TOTP MFA <span class="badge-new">New</span></h3>
+          <p class="text-sm text-gray-400">Multi-factor authentication with Google Authenticator, Authy, or any TOTP app. 10 backup codes included.</p>
+        </div>
+        <div class="feature-card p-5">
+          <div class="text-2xl mb-3">👤</div>
+          <h3 class="font-semibold text-white mb-1">Role-Based Access</h3>
+          <p class="text-sm text-gray-400">Admin and Sales roles with granular permissions. Admins manage everything; Sales sees what they need.</p>
+        </div>
+        <div class="feature-card p-5">
+          <div class="text-2xl mb-3">🛡️</div>
+          <h3 class="font-semibold text-white mb-1">CrowdSec WAF</h3>
+          <p class="text-sm text-gray-400">Community-driven threat intelligence protecting against automated attacks.</p>
+        </div>
+        <div class="feature-card p-5">
+          <div class="text-2xl mb-3">🔑</div>
+          <h3 class="font-semibold text-white mb-1">NextAuth v5</h3>
+          <p class="text-sm text-gray-400">JWT sessions with 30-day expiry. Credentials + SSO providers. No third-party auth dependency.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── UX ── -->
+    <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 section-glow">
+      <h2 class="text-2xl font-bold mb-2">✨ UX &amp; Polish</h2>
+      <p class="text-gray-400 mb-8">Built for people who hate clunky software.</p>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div class="feature-card p-5">
+          <div class="text-2xl mb-3">🌙</div>
+          <h3 class="font-semibold text-white mb-1">Dark Mode</h3>
+          <p class="text-sm text-gray-400">Full dark mode support across every page and component.</p>
+        </div>
+        <div class="feature-card p-5">
+          <div class="text-2xl mb-3">📱</div>
+          <h3 class="font-semibold text-white mb-1">Mobile Responsive</h3>
+          <p class="text-sm text-gray-400">Works on phones and tablets. Stacking layouts, touch-friendly buttons, responsive tables.</p>
+        </div>
+        <div class="feature-card p-5">
+          <div class="text-2xl mb-3">⌨️</div>
+          <h3 class="font-semibold text-white mb-1">Keyboard Shortcuts</h3>
+          <p class="text-sm text-gray-400">Navigate the entire app without touching your mouse. Press ? for the shortcut guide.</p>
+        </div>
+        <div class="feature-card p-5">
+          <div class="text-2xl mb-3">💡</div>
+          <h3 class="font-semibold text-white mb-1">Feature Requests <span class="badge-new">New</span></h3>
+          <p class="text-sm text-gray-400">Built-in feedback system. Your team can submit feature requests right from the app.</p>
+        </div>
+        <div class="feature-card p-5">
+          <div class="text-2xl mb-3">🔧</div>
+          <h3 class="font-semibold text-white mb-1">Live Diagnostics</h3>
+          <p class="text-sm text-gray-400">Real-time log viewer with SSE streaming. Debug integrations without touching the server.</p>
+        </div>
+        <div class="feature-card p-5">
+          <div class="text-2xl mb-3">✅</div>
+          <h3 class="font-semibold text-white mb-1">Production Readiness</h3>
+          <p class="text-sm text-gray-400">Built-in checklist that verifies your deployment is ready for production.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-20 px-4">
+      <div class="max-w-3xl mx-auto text-center">
+        <div class="gradient-cta rounded-2xl p-12">
+          <h2 class="text-3xl font-bold mb-4">Ready to quote faster?</h2>
+          <p class="text-indigo-100 mb-8">See how QuoteBot can transform your SOW process.</p>
+          <a href="contact.html" class="inline-flex items-center gap-2 bg-white text-indigo-700 font-semibold px-6 py-3 rounded-lg hover:bg-gray-100 transition-colors">
+            Request a Demo →
+          </a>
+        </div>
+      </div>
+    </section>
   </main>
 
-  <footer class="py-8 px-6 bg-gray-800 text-center">
-    <p>&copy; 2024 QuoteBot. All rights reserved.</p>
+  <!-- ── FOOTER ── -->
+  <footer class="border-t border-gray-800 py-12 px-4">
+    <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6">
+      <div class="flex items-center gap-2">
+        <span class="text-xl">⚡</span>
+        <span class="font-bold text-white">Quote<span class="gradient-text">Bot</span></span>
+      </div>
+      <div class="flex items-center gap-6 text-sm text-gray-400">
+        <a href="index.html" class="hover:text-white transition-colors">Home</a>
+        <a href="features.html" class="hover:text-white transition-colors">Features</a>
+        <a href="contact.html" class="hover:text-white transition-colors">Contact</a>
+      </div>
+      <p class="text-sm text-gray-500">© 2026 Centre Technologies</p>
+    </div>
   </footer>
+
+  <script>
+    document.getElementById('mobile-menu-btn')?.addEventListener('click', () => {
+      document.getElementById('mobile-menu')?.classList.toggle('hidden');
+    });
+  </script>
 </body>
 </html>

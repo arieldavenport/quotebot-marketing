@@ -1,56 +1,395 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>QuoteBot - The SOW Generator for ScopeStack</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>QuoteBot — AI-Powered CPQ for IT Services</title>
+  <meta name="description" content="QuoteBot turns meeting transcripts into polished Statements of Work in minutes. AI-powered CPQ built for MSPs, VARs, and IT services companies." />
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css" />
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            indigo: { 500: '#6366f1', 600: '#4f46e5', 700: '#4338ca' },
+          }
+        }
+      }
+    }
+  </script>
 </head>
-<body class="bg-gray-900 text-white dark">
-  <header class="py-4 px-6">
-    <nav class="flex justify-between items-center">
-      <a href="index.html" class="text-2xl font-bold">QuoteBot</a>
-      <a href="#contact" class="bg-blue-600 px-4 py-2 rounded">Try QuoteBot</a>
-    </nav>
-  </header>
+<body class="antialiased">
 
-  <main>
-    <section class="hero py-16 px-6 text-center">
-      <h1 class="text-4xl font-bold mb-4">QuoteBot: The SOW Generator for ScopeStack</h1>
-      <p class="text-xl mb-8">Automate SOW creation from call transcripts with AI-powered scope generation</p>
-      <a href="#features" class="bg-blue-600 px-6 py-3 rounded text-white">Learn More</a>
-    </section>
-
-    <section id="features" class="py-16 px-6">
-      <h2 class="text-3xl font-bold mb-8 text-center">Key Benefits</h2>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div class="bg-gray-800 p-6 rounded shadow">
-          <h3 class="text-2xl font-bold">AI-driven scope extraction</h3>
-          <p>Automatically extract scope from call transcripts</p>
+  <!-- ── NAV ── -->
+  <nav class="fixed top-0 left-0 right-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <!-- Logo -->
+        <a href="index.html" class="flex items-center gap-2">
+          <span class="text-2xl">⚡</span>
+          <span class="font-bold text-xl text-white tracking-tight">Quote<span class="gradient-text">Bot</span></span>
+        </a>
+        <!-- Desktop links -->
+        <div class="hidden md:flex items-center gap-8">
+          <a href="index.html" class="text-sm font-medium text-gray-300 hover:text-white transition-colors">Home</a>
+          <a href="features.html" class="text-sm font-medium text-gray-300 hover:text-white transition-colors">Features</a>
+          <a href="contact.html" class="text-sm font-medium text-gray-300 hover:text-white transition-colors">Contact</a>
         </div>
-        <div class="bg-gray-800 p-6 rounded shadow">
-          <h3 class="text-2xl font-bold">One-click DOCX export</h3>
-          <p>Export to DOCX with custom templates</p>
-        </div>
-        <div class="bg-gray-800 p-6 rounded shadow">
-          <h3 class="text-2xl font-bold">ConnectWise integration</h3>
-          <p>Seamless integration with ConnectWise</p>
+        <!-- CTA -->
+        <div class="flex items-center gap-3">
+          <a href="contact.html" class="hidden sm:inline-flex btn-primary px-4 py-2 text-sm rounded-lg">
+            Get Started →
+          </a>
+          <!-- Mobile menu button -->
+          <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg text-gray-400 hover:text-white hover:bg-gray-800 transition-colors" aria-label="Toggle menu">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+            </svg>
+          </button>
         </div>
       </div>
-    </section>
-
-    <section id="demo" class="py-16 px-6">
-      <h2 class="text-3xl font-bold mb-8 text-center">Demo</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <img src="static/screenshot1.jpg" alt="QuoteBot Dashboard" class="rounded shadow">
-        <img src="static/screenshot2.jpg" alt="QuoteBot Projects" class="rounded shadow">
+    </div>
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="hidden md:hidden border-t border-gray-800 bg-gray-900">
+      <div class="px-4 py-4 flex flex-col gap-4">
+        <a href="index.html" class="text-sm font-medium text-gray-300 hover:text-white">Home</a>
+        <a href="features.html" class="text-sm font-medium text-gray-300 hover:text-white">Features</a>
+        <a href="contact.html" class="text-sm font-medium text-gray-300 hover:text-white">Contact</a>
+        <a href="contact.html" class="btn-primary px-4 py-2 text-sm text-center rounded-lg">Get Started →</a>
       </div>
-    </section>
-  </main>
+    </div>
+  </nav>
 
-  <footer class="py-8 px-6 bg-gray-800 text-center">
-    <p>&copy; 2024 QuoteBot. All rights reserved.</p>
+  <!-- ── HERO ── -->
+  <section class="gradient-hero pt-32 pb-24 px-4 text-center relative overflow-hidden">
+    <!-- Decorative blobs -->
+    <div class="absolute top-20 left-1/4 w-72 h-72 bg-indigo-600 opacity-5 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute bottom-10 right-1/4 w-96 h-96 bg-purple-600 opacity-5 rounded-full blur-3xl pointer-events-none"></div>
+
+    <div class="max-w-4xl mx-auto relative z-10">
+      <!-- Eyebrow -->
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-indigo-600/10 border border-indigo-500/30 text-indigo-400 text-sm font-medium mb-8">
+        <span>🤖</span> Powered by GPT-5.3 via Azure AI Foundry
+      </div>
+
+      <h1 class="text-5xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight leading-tight mb-6">
+        Turn Meetings Into<br/>
+        <span class="gradient-text">Polished SOWs</span><br/>
+        in Minutes
+      </h1>
+
+      <p class="text-xl text-gray-400 max-w-2xl mx-auto mb-10 leading-relaxed">
+        QuoteBot is the AI-powered CPQ platform built for IT services companies. Record your client call, let AI extract the services, and generate a branded Statement of Work — automatically.
+      </p>
+
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a href="contact.html" class="btn-primary px-8 py-3.5 text-base rounded-xl">
+          Request a Demo →
+        </a>
+        <a href="features.html" class="btn-secondary px-8 py-3.5 text-base rounded-xl">
+          Explore Features
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── STATS BAR ── -->
+  <section class="border-y border-gray-800 bg-gray-900/50">
+    <div class="max-w-5xl mx-auto px-4 py-8">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+        <div class="stat-pill px-6 py-4">
+          <div class="text-3xl font-bold text-white mb-1">50+</div>
+          <div class="text-sm text-gray-400">Features Built &amp; Live</div>
+        </div>
+        <div class="stat-pill px-6 py-4">
+          <div class="text-3xl font-bold text-white mb-1">5</div>
+          <div class="text-sm text-gray-400">Native Integrations</div>
+        </div>
+        <div class="stat-pill px-6 py-4">
+          <div class="text-3xl font-bold text-white mb-1">AI</div>
+          <div class="text-sm text-gray-400">Powered by GPT-5.3</div>
+        </div>
+        <div class="stat-pill px-6 py-4">
+          <div class="text-3xl font-bold text-white mb-1">0</div>
+          <div class="text-sm text-gray-400">Manual SOW Hours</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── HOW IT WORKS ── -->
+  <section class="py-24 px-4 section-glow">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl sm:text-4xl font-bold text-white mb-4">How It Works</h2>
+        <p class="text-gray-400 text-lg max-w-xl mx-auto">Three steps from client call to signed document.</p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8 relative">
+        <!-- Step 1 -->
+        <div class="text-center relative">
+          <div class="w-16 h-16 rounded-2xl bg-indigo-600/20 border border-indigo-500/30 flex items-center justify-center text-3xl mx-auto mb-6">🎙️</div>
+          <div class="absolute top-8 left-full w-full hidden md:block">
+            <div class="h-0.5 bg-gradient-to-r from-indigo-500/60 to-purple-500/60 mx-4"></div>
+          </div>
+          <div class="inline-block px-3 py-1 rounded-full bg-gray-800 text-indigo-400 text-xs font-bold uppercase tracking-widest mb-3">Step 1</div>
+          <h3 class="text-xl font-bold text-white mb-3">Record</h3>
+          <p class="text-gray-400 text-sm leading-relaxed">Your client meeting is recorded and transcribed automatically via Read.ai. QuoteBot receives the transcript via webhook the moment the call ends.</p>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="text-center relative">
+          <div class="w-16 h-16 rounded-2xl bg-purple-600/20 border border-purple-500/30 flex items-center justify-center text-3xl mx-auto mb-6">🧠</div>
+          <div class="absolute top-8 left-full w-full hidden md:block">
+            <div class="h-0.5 bg-gradient-to-r from-purple-500/60 to-violet-500/60 mx-4"></div>
+          </div>
+          <div class="inline-block px-3 py-1 rounded-full bg-gray-800 text-purple-400 text-xs font-bold uppercase tracking-widest mb-3">Step 2</div>
+          <h3 class="text-xl font-bold text-white mb-3">Extract</h3>
+          <p class="text-gray-400 text-sm leading-relaxed">GPT-5.3 reads the transcript, extracts required services, matches them against your catalog, applies your rate tables, and generates pricing — complete with MSA discounts.</p>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="text-center">
+          <div class="w-16 h-16 rounded-2xl bg-violet-600/20 border border-violet-500/30 flex items-center justify-center text-3xl mx-auto mb-6">📄</div>
+          <div class="inline-block px-3 py-1 rounded-full bg-gray-800 text-violet-400 text-xs font-bold uppercase tracking-widest mb-3">Step 3</div>
+          <h3 class="text-xl font-bold text-white mb-3">Generate</h3>
+          <p class="text-gray-400 text-sm leading-relaxed">A fully branded SOW is generated as DOCX or PDF. Preview it in-browser, run through approval workflow, then email it to the client — all without leaving QuoteBot.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FEATURE HIGHLIGHTS ── -->
+  <section class="py-24 px-4 bg-gray-900/30">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl sm:text-4xl font-bold text-white mb-4">Everything You Need to Close Faster</h2>
+        <p class="text-gray-400 text-lg max-w-2xl mx-auto">From transcript to signed SOW — QuoteBot handles the heavy lifting so your team can focus on clients.</p>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+        <div class="feature-card p-6">
+          <div class="text-3xl mb-4">🤖</div>
+          <h3 class="text-lg font-bold text-white mb-2">AI SOW Generation</h3>
+          <p class="text-gray-400 text-sm leading-relaxed">Paste or auto-import a meeting transcript. GPT-5.3 extracts services, builds the project structure, and drafts a complete SOW in seconds.</p>
+        </div>
+
+        <div class="feature-card p-6">
+          <div class="text-3xl mb-4">💰</div>
+          <h3 class="text-lg font-bold text-white mb-2">Smart Pricing Engine</h3>
+          <p class="text-gray-400 text-sm leading-relaxed">Tiered rate tables, MSA discounts, and governance calculations applied automatically. AI pricing advice with market signals keeps you competitive.</p>
+        </div>
+
+        <div class="feature-card p-6">
+          <div class="text-3xl mb-4">📋</div>
+          <h3 class="text-lg font-bold text-white mb-2">Service Catalog</h3>
+          <p class="text-gray-400 text-sm leading-relaxed">Build and manage your full service catalog with categories. Sync directly from ScopeStack via OAuth2. Services are matched automatically during AI extraction.</p>
+        </div>
+
+        <div class="feature-card p-6">
+          <div class="text-3xl mb-4">🔌</div>
+          <h3 class="text-lg font-bold text-white mb-2">ConnectWise Integration</h3>
+          <p class="text-gray-400 text-sm leading-relaxed">Sync clients, push approved SOWs as opportunities, and track budget vs. actuals — all without leaving QuoteBot.</p>
+        </div>
+
+        <div class="feature-card p-6">
+          <div class="text-3xl mb-4">📊</div>
+          <h3 class="text-lg font-bold text-white mb-2">Revenue Dashboard</h3>
+          <p class="text-gray-400 text-sm leading-relaxed">KPI tracking, 6-month revenue pipeline, win/loss analytics, per-user activity reports, and full audit trail. Filter by any date range.</p>
+        </div>
+
+        <div class="feature-card p-6">
+          <div class="text-3xl mb-4">🔒</div>
+          <h3 class="text-lg font-bold text-white mb-2">Enterprise Security</h3>
+          <p class="text-gray-400 text-sm leading-relaxed">Microsoft Entra ID SSO, TOTP MFA, role-based access, NextAuth v5 sessions, and CrowdSec WAF protection. Built for production from day one.</p>
+        </div>
+
+        <div class="feature-card p-6">
+          <div class="text-3xl mb-4">📁</div>
+          <h3 class="text-lg font-bold text-white mb-2">Document Workflow</h3>
+          <p class="text-gray-400 text-sm leading-relaxed">DOCX and PDF generation with branded templates, in-browser preview, versioning, approval workflow, and direct email delivery.</p>
+        </div>
+
+        <div class="feature-card p-6">
+          <div class="text-3xl mb-4">⚡</div>
+          <h3 class="text-lg font-bold text-white mb-2">Project Templates</h3>
+          <p class="text-gray-400 text-sm leading-relaxed">Save winning project structures as templates. Copy and reuse them instantly. Combine multiple meeting transcripts into a single SOW for complex engagements.</p>
+        </div>
+
+        <div class="feature-card p-6 sm:col-span-2 lg:col-span-1">
+          <div class="text-3xl mb-4">🛡️</div>
+          <h3 class="text-lg font-bold text-white mb-2">Multi-Model AI</h3>
+          <p class="text-gray-400 text-sm leading-relaxed">Per-task model selection lets you dial in the right AI for each job — from fast synopsis generation to deep pricing analysis.</p>
+        </div>
+
+      </div>
+
+      <div class="text-center mt-10">
+        <a href="features.html" class="btn-secondary px-6 py-3 rounded-xl text-sm">
+          View All 50+ Features →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── INTEGRATIONS ── -->
+  <section class="py-24 px-4">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center mb-14">
+        <h2 class="text-3xl sm:text-4xl font-bold text-white mb-4">Built to Fit Your Stack</h2>
+        <p class="text-gray-400 text-lg">Native integrations with the tools IT services teams already use.</p>
+      </div>
+
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
+
+        <div class="integration-card p-5 text-center">
+          <div class="text-4xl mb-3">🔗</div>
+          <div class="text-sm font-semibold text-white mb-1">ConnectWise</div>
+          <div class="text-xs text-gray-500">Manage</div>
+        </div>
+
+        <div class="integration-card p-5 text-center">
+          <div class="text-4xl mb-3">📦</div>
+          <div class="text-sm font-semibold text-white mb-1">ScopeStack</div>
+          <div class="text-xs text-gray-500">Service Catalog</div>
+        </div>
+
+        <div class="integration-card p-5 text-center">
+          <div class="text-4xl mb-3">🎙️</div>
+          <div class="text-sm font-semibold text-white mb-1">Read.ai</div>
+          <div class="text-xs text-gray-500">Transcripts</div>
+        </div>
+
+        <div class="integration-card p-5 text-center">
+          <div class="text-4xl mb-3">☁️</div>
+          <div class="text-sm font-semibold text-white mb-1">Azure AI</div>
+          <div class="text-xs text-gray-500">GPT-5.3 Foundry</div>
+        </div>
+
+        <div class="integration-card p-5 text-center col-span-2 sm:col-span-1">
+          <div class="text-4xl mb-3">🪪</div>
+          <div class="text-sm font-semibold text-white mb-1">Entra ID</div>
+          <div class="text-xs text-gray-500">SSO / Identity</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── TESTIMONIALS (placeholder) ── -->
+  <section class="py-24 px-4 bg-gray-900/30">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center mb-14">
+        <h2 class="text-3xl sm:text-4xl font-bold text-white mb-4">Trusted by IT Services Teams</h2>
+        <p class="text-gray-400 text-lg">Here's what our users are saying.</p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-6">
+
+        <div class="testimonial-card p-8">
+          <div class="flex items-center gap-1 text-yellow-400 text-lg mb-4">★★★★★</div>
+          <p class="text-gray-300 leading-relaxed mb-6">"QuoteBot has completely changed how our sales team operates. What used to take a full day of back-and-forth now takes fifteen minutes. The AI extraction is scarily accurate."</p>
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-indigo-600/30 border border-indigo-500/30 flex items-center justify-center text-indigo-400 font-bold text-sm">JR</div>
+            <div>
+              <div class="text-sm font-semibold text-white">James R.</div>
+              <div class="text-xs text-gray-500">VP Sales, Regional MSP</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card p-8">
+          <div class="flex items-center gap-1 text-yellow-400 text-lg mb-4">★★★★★</div>
+          <p class="text-gray-300 leading-relaxed mb-6">"The ConnectWise integration alone was worth it. Our SOWs flow straight into opportunities, budgets sync back automatically, and nothing falls through the cracks anymore."</p>
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-purple-600/30 border border-purple-500/30 flex items-center justify-center text-purple-400 font-bold text-sm">SK</div>
+            <div>
+              <div class="text-sm font-semibold text-white">Sarah K.</div>
+              <div class="text-xs text-gray-500">Director of Operations, VAR</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CTA ── -->
+  <section class="py-24 px-4">
+    <div class="max-w-3xl mx-auto text-center">
+      <div class="gradient-cta rounded-2xl p-12 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent"></div>
+        <div class="relative z-10">
+          <div class="text-4xl mb-4">⚡</div>
+          <h2 class="text-3xl sm:text-4xl font-bold text-white mb-4">Ready to Automate Your SOW Workflow?</h2>
+          <p class="text-indigo-200 text-lg mb-8">Join IT services teams who close deals faster with AI-powered quoting.</p>
+          <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <a href="contact.html" class="bg-white text-indigo-700 font-bold px-8 py-3.5 rounded-xl hover:bg-indigo-50 transition-colors">
+              Request a Demo →
+            </a>
+            <a href="features.html" class="text-white/80 hover:text-white font-medium transition-colors">
+              Explore Features ↗
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer class="border-t border-gray-800 bg-gray-900/80 py-12 px-4">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-10">
+
+        <!-- Brand -->
+        <div class="lg:col-span-2">
+          <a href="index.html" class="flex items-center gap-2 mb-4">
+            <span class="text-2xl">⚡</span>
+            <span class="font-bold text-xl text-white">Quote<span class="gradient-text">Bot</span></span>
+          </a>
+          <p class="text-gray-400 text-sm leading-relaxed max-w-sm">AI-Powered CPQ for IT Services. Built by Centre Technologies to help MSPs, VARs, and IT services teams quote faster and win more.</p>
+        </div>
+
+        <!-- Product links -->
+        <div>
+          <h4 class="text-sm font-semibold text-white uppercase tracking-widest mb-4">Product</h4>
+          <ul class="space-y-2">
+            <li><a href="features.html" class="text-sm text-gray-400 hover:text-white transition-colors">Features</a></li>
+            <li><a href="features.html#integrations" class="text-sm text-gray-400 hover:text-white transition-colors">Integrations</a></li>
+            <li><a href="features.html#security" class="text-sm text-gray-400 hover:text-white transition-colors">Security</a></li>
+            <li><a href="contact.html" class="text-sm text-gray-400 hover:text-white transition-colors">Pricing</a></li>
+          </ul>
+        </div>
+
+        <!-- Company links -->
+        <div>
+          <h4 class="text-sm font-semibold text-white uppercase tracking-widest mb-4">Company</h4>
+          <ul class="space-y-2">
+            <li><a href="contact.html" class="text-sm text-gray-400 hover:text-white transition-colors">Contact</a></li>
+            <li><a href="contact.html" class="text-sm text-gray-400 hover:text-white transition-colors">Request Demo</a></li>
+            <li><a href="mailto:adavenport@centre.tech" class="text-sm text-gray-400 hover:text-white transition-colors">adavenport@centre.tech</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="border-t border-gray-800 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <p class="text-xs text-gray-500">© 2026 Centre Technologies. All rights reserved.</p>
+        <p class="text-xs text-gray-500">QuoteBot — AI-Powered CPQ for IT Services</p>
+      </div>
+    </div>
   </footer>
+
+  <script>
+    // Mobile nav toggle
+    document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+      const menu = document.getElementById('mobile-menu');
+      menu.classList.toggle('hidden');
+    });
+  </script>
+
 </body>
 </html>
